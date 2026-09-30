@@ -1,13 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
+
+      <ImageBackground 
+      source={require('../assets/restaurant.jpg')} 
+      style={styles.background}
+      resizeMode="cover"  
+      >
+        <View style={styles.overlay}>
+          <View style={styles.content}>
+            <Text style={styles.title}>UseState() Of Mind</Text>
+          </View>
+        </View>
       
-      <View style={styles.content}>
-        <Text style={styles.title}>Välkommen till vår restaurang!</Text>
-      </View>
+      </ImageBackground>
 
       <View style={styles.footer}>
         <Text>Storagatan 123, 123 45 Stad</Text>
@@ -15,8 +24,6 @@ export default function HomeScreen() {
       </View>
 
     </View>
-    
-
 
   );
 }
@@ -25,20 +32,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+  },
+  background: {
+    flex: 1,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(112, 93, 93, 0.4)',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingTop: 60,
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
+    paddingTop: 100,
+    color: '#fff',
   },
-  footer: {
+   footer: {
     alignItems: 'center',
     padding: 30,
     backgroundColor: '#eee',
