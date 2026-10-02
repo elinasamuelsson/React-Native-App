@@ -1,25 +1,35 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import CustomButton from '../components/CustomButton';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
 
-      <ImageBackground 
-      source={require('../assets/restaurant.jpg')} 
-      style={styles.background}
-      resizeMode="cover"  
+      <ImageBackground
+        source={require('../assets/restaurant.jpg')}
+        style={styles.background}
+        resizeMode="cover"
       >
         <View style={styles.overlay}>
           <View style={styles.content}>
             <Text style={styles.title}>UseState() Of Mind</Text>
           </View>
         </View>
-      
+
       </ImageBackground>
 
       <View style={styles.footer}>
         <Text>Storagatan 123, 123 45 Stad</Text>
         <Text>Tel: 012-345 6789</Text>
+      </View>
+
+      <View style={styles.testButton}>
+        <CustomButton
+          title="Custom Button"
+          onPress={() => console.log('Custom Button pressed')}
+          variant="primary"
+        />
       </View>
 
     </View>
@@ -54,9 +64,15 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     color: '#fff',
   },
-   footer: {
+  footer: {
     alignItems: 'center',
     padding: 30,
     backgroundColor: '#eee',
-  }
+  },
+  testButton: {
+    position: 'absolute',
+    bottom: 100,
+    left: 20,
+    right: 20,
+  },
 });
