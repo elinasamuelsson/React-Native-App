@@ -1,7 +1,6 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View, Pressable} from 'react-native';
 
-
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
@@ -10,6 +9,9 @@ export default function HomeScreen() {
       style={styles.background}
       resizeMode="cover"  
       >
+        <Pressable onPress={() => navigation.navigate("Foods")}>
+            <Text style={{color: "white", fontSize: 20, textAlign: "center", paddingTop: 10}}>Go to foods</Text>
+        </Pressable>
         <View style={styles.overlay}>
           <View style={styles.content}>
             <Text style={styles.title}>UseState() Of Mind</Text>
