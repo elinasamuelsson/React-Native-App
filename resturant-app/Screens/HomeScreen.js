@@ -1,13 +1,19 @@
+<<<<<<< HEAD
 import {ImageBackground, StyleSheet, Text, View, Pressable} from 'react-native';
+=======
+import React from 'react';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import CustomButton from '../components/CustomButton';
+>>>>>>> 16d6ce0f9ec4ce7316ffc10d44d1c263d6821374
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
-      <ImageBackground 
-      source={require('../assets/restaurant.jpg')} 
-      style={styles.background}
-      resizeMode="cover"  
+      <ImageBackground
+        source={require('../assets/restaurant.jpg')}
+        style={styles.background}
+        resizeMode="cover"
       >
         <Pressable onPress={() => navigation.navigate("Foods")}>
             <Text style={{color: "white", fontSize: 20, textAlign: "center", paddingTop: 10}}>Go to foods</Text>
@@ -17,12 +23,20 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.title}>UseState() Of Mind</Text>
           </View>
         </View>
-      
+
       </ImageBackground>
 
       <View style={styles.footer}>
         <Text>Storagatan 123, 123 45 Stad</Text>
         <Text>Tel: 012-345 6789</Text>
+      </View>
+
+      <View style={styles.testButton}>
+        <CustomButton
+          title="Custom Button"
+          onPress={() => console.log('Custom Button pressed')}
+          variant="primary"
+        />
       </View>
 
     </View>
@@ -57,9 +71,15 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     color: '#fff',
   },
-   footer: {
+  footer: {
     alignItems: 'center',
     padding: 30,
     backgroundColor: '#eee',
-  }
+  },
+  testButton: {
+    position: 'absolute',
+    bottom: 100,
+    left: 20,
+    right: 20,
+  },
 });
