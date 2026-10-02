@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import {ImageBackground, StyleSheet, Text, View, Pressable} from 'react-native';
-=======
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import CustomButton from '../components/CustomButton';
->>>>>>> 16d6ce0f9ec4ce7316ffc10d44d1c263d6821374
 
 export default function HomeScreen({ navigation }) {
   return (
