@@ -1,6 +1,7 @@
 import React from "react";
 import { Pressable, Text, StyleSheet } from "react-native";
 import { colors } from "../constants/colors";
+import { fontSize, fontWeight } from "../constants/typography";
 
 export default function CustomButton({
   title,
@@ -54,8 +55,8 @@ const styles = StyleSheet.create({
     opacity: 0.75,
   },
   label: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: fontSize.medium,
+    fontWeight: fontWeight.bold,
     color: 'white',
   },
 });
