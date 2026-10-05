@@ -1,6 +1,6 @@
 import {ImageBackground, StyleSheet, Text, View, Pressable} from 'react-native';
 import React from 'react';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../Components/CustomButton';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -17,6 +17,14 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.overlay}>
           <View style={styles.content}>
             <Text style={styles.title}>UseState() Of Mind</Text>
+
+            <View style={styles.menuButton}>
+              <CustomButton
+                title="View Menu"
+                onPress={() => navigation.navigate("Menu")}
+              />
+            </View>
+
           </View>
         </View>
 
@@ -66,6 +74,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 100,
     color: '#fff',
+
+    menuButton: {
+      marginTop: 24,
+    },
   },
   footer: {
     alignItems: 'center',

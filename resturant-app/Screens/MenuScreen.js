@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../Components/CustomButton';
 import { menu } from '../data/menu';
 
 const categories = [...new Set(menu.map((item) => item.category))];
@@ -17,7 +17,7 @@ export default function MenuScreen() {
     <View style={styles.container}>
       <Text style={styles.heading}>Menu</Text>
 
-      {/* Horisontell lista med en knapp per kategori */}
+    
       <FlatList
         data={categories}
         keyExtractor={(item) => item} // Kategorinamnet är unikt och funkar som nyckel
@@ -36,7 +36,7 @@ export default function MenuScreen() {
         )}
       />
 
-      {/* Vertikal lista med rätterna i vald kategori */}
+     
       <FlatList
         data={filteredMenu}
         keyExtractor={(item) => item.id.toString()} 
@@ -46,14 +46,14 @@ export default function MenuScreen() {
           // Ett kort per rätt
           <View style={styles.card}>
             
-            {/* Namn till vänster, pris till höger */}
+            
             <View style={styles.row}>
               <Text style={styles.name}>{item.name}</Text>
               <Text style={styles.price}>{item.price} kr</Text>
             </View>
             <Text style={styles.description}>{item.description}</Text>
             
-            {/* Allergener visas bara om det finns några */}
+            
             {item.allergens.length > 0 && (
               <Text style={styles.allergens}>Allergener: {item.allergens.join(', ')}</Text>
             )}
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   // flexGrow: 0 hindrar kategoriraden från att ta upp halva skärmen
   categoryList: {
     flexGrow: 0,
+    flexShrink: 0,
   },
   
   // Avstånd mellan knapparna och till kanterna
