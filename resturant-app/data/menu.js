@@ -1,4 +1,4 @@
-export const menu = [
+const menu = [
 	{
 		id: 1,
 		name: "Margherita",
@@ -344,3 +344,5 @@ export const menu = [
 		allergens: [],
 	},
 ];
+
+export default menu;
