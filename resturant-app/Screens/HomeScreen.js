@@ -1,8 +1,22 @@
-import {ImageBackground, StyleSheet, Text, View, Pressable} from 'react-native';
-import React from 'react';
+import { ImageBackground, StyleSheet, Text, View, Pressable, Linking } from 'react-native';
 import CustomButton from '../components/CustomButton';
+import { fontSize, fontWeight } from '../constants/typography';
+import { colors } from '../constants/colors';
 
 export default function HomeScreen({ navigation }) {
+
+  const ADDRESS = "Storagatan 123, 123 45 Stad";
+  const PHONE_NUMBER = "+46012346789";
+
+  async function openMaps() {
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
+    await Linking.openURL(url);
+  }
+
+  async function openPhone() {
+    await Linking.openURL(`tel:${PHONE_NUMBER}`);
+  }
+
   return (
     <View style={styles.container}>
 
@@ -12,7 +26,7 @@ export default function HomeScreen({ navigation }) {
         resizeMode="cover"
       >
         <Pressable onPress={() => navigation.navigate("Foods")}>
-            <Text style={{color: "white", fontSize: 20, textAlign: "center", paddingTop: 10}}>Go to foods</Text>
+          <Text style={styles.foodText}>Go to foods</Text>
         </Pressable>
         <View style={styles.overlay}>
           <View style={styles.content}>
@@ -23,8 +37,12 @@ export default function HomeScreen({ navigation }) {
       </ImageBackground>
 
       <View style={styles.footer}>
-        <Text>Storagatan 123, 123 45 Stad</Text>
-        <Text>Tel: 012-345 6789</Text>
+        <Pressable onPress={openMaps}>
+          <Text style={styles.addressText}>{ADDRESS}</Text>
+        </Pressable>
+        <Pressable onPress={openPhone}>
+          <Text style={styles.addressText}>Tel: {PHONE_NUMBER}</Text>
+        </Pressable>
       </View>
 
       <View style={styles.testButton}>
@@ -43,7 +61,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     justifyContent: 'center',
   },
   background: {
@@ -51,7 +69,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(112, 93, 93, 0.4)',
+    backgroundColor: colors.borders + '10',
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 60,
@@ -62,19 +80,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: fontSize.xLarge,
+    fontWeight: fontWeight.bold,
     paddingTop: 100,
-    color: '#fff',
+    color: colors.background,
   },
   footer: {
     alignItems: 'center',
-    padding: 30,
-    backgroundColor: '#eee',
+    paddingBottom: 60,
+    paddingTop: 20,
+    backgroundColor: colors.surface,
+  },
+  foodText: {
+    color: colors.background,
+    fontSize: 20,
+    textAlign: "center",
+    paddingTop: 10,
+  },
+  addressText: {
+    color: 'rgb(0, 48, 136)',
+    textDecorationLine: 'underline',
+    marginBottom: 4,
   },
   testButton: {
     position: 'absolute',
-    bottom: 100,
+    bottom: 130,
     left: 20,
     right: 20,
   },
