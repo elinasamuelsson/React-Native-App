@@ -1,51 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {StatusBar} from "expo-status-bar";
+import {StyleSheet, Text, View} from "react-native";
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 import HomeScreen from "./Screens/HomeScreen.js";
 import Foods from "./Screens/Foods.js";
-import FoodInfo from './Screens/FoodInfo.js';
-import MenuScreen from './Screens/MenuScreen.js';
+import FoodInfo from "./Screens/FoodInfo.js";
+import MenuScreen from "./Screens/MenuScreen.js";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{
-            title: "Home"
-          }}
-        />
+	return (
+		<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen
+					name="Home"
+					component={HomeScreen}
+					options={{
+						title: "Home",
+					}}
+				/>
 
-        <Stack.Screen
-          name="Foods" 
-          component={Foods} 
-          options={{
-            title: "Foods"
-          }}
-        />
+				<Stack.Screen
+					name="Foods"
+					component={Foods}
+					options={{
+						title: "Foods",
+					}}
+				/>
 
-        <Stack.Screen
-          name="FoodInfo" 
-          component={FoodInfo} 
-          options={{
-            title: "FoodInfo"
-          }}
-        />
+				<Stack.Screen
+					name="FoodInfo"
+					component={FoodInfo}
+					options={({route}) => ({
+						title: route.params.menuItem.title,
+					})}
+				/>
 
-        <Stack.Screen
-          name="Menu"
-          component={MenuScreen}
-          options={{
-            title: "Menu"
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+				<Stack.Screen
+					name="Menu"
+					component={MenuScreen}
+					options={{
+						title: "Menu",
+					}}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
 }

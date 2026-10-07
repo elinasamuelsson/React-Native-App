@@ -1,9 +1,43 @@
-import { View, Text } from "react-native";
+import {View, StyleSheet, FlatList} from "react-native";
+import {spacing} from "../constants/spacing";
 
-export default function FoodInfo({ navigation }) {
-    return (
-        <View>
-            <Text>Hello I'm FoodInfo</Text>
-        </View>
-    )
+import HeaderText from "../components/HeaderText";
+import BodyText from "../components/BodyText";
+import CustomButton from "../components/CustomButton";
+import WarningText from "../components/WarningText";
+import SmallHeaderText from "../components/SmallHeaderText";
+
+export default function FoodInfo({navigation, route}) {
+	const {menuItem} = route.params;
+	return (
+		<View style={styles.outerContainer}>
+			<View>
+				<HeaderText title={menuItem.name} />
+				<View style={styles.innerContainer}>
+					<SmallHeaderText title="Beskrivning:" />
+					<BodyText title={menuItem.description} />
+				</View>
+				<View style={styles.innerContainer}>
+					<SmallHeaderText title="Pris:" />
+					<BodyText title={menuItem.price} />
+				</View>
+				<View style={styles.innerContainer}>
+					<SmallHeaderText title="Allergener:" />
+					<FlatList
+						data={menuItem.allergens}
+						renderItem={({item}) => <WarningText title={item} />}
+						keyExtractor={(item) => item.id}
+					/>
+				</View>
+			</View>
+			<View>
+				<CustomButton title="Back to menu" onPress={() => navigation.navigate("Menu")} variant="secondary" />
+			</View>
+		</View>
+	);
 }
+
+const styles = StyleSheet.create({
+	outerContainer: {flex: 1, justifyContent: "space-between", padding: spacing.small},
+	innerContainer: {paddingBottom: spacing.medium},
+});
