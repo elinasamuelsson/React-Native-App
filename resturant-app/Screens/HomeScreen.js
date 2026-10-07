@@ -32,25 +32,12 @@ export default function HomeScreen({navigation}) {
 				</View>
 
 				<View style={styles.footer}>
-					<Text>Storagatan 123, 123 45 Stad</Text>
-					<Text>Tel: 012-345 6789</Text>
-				</View>
-
-				<View style={styles.footer}>
 					<Pressable onPress={openMaps}>
 						<Text style={styles.addressText}>{ADDRESS}</Text>
 					</Pressable>
 					<Pressable onPress={openPhone}>
 						<Text style={styles.addressText}>Tel: {PHONE_NUMBER}</Text>
 					</Pressable>
-				</View>
-
-				<View style={styles.testButton}>
-					<CustomButton
-						title="Custom Button"
-						onPress={() => console.log("Custom Button pressed")}
-						variant="primary"
-					/>
 				</View>
 			</ImageBackground>
 		</View>
