@@ -34,7 +34,10 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
 
-      </ImageBackground>
+			<View style={styles.footer}>
+				<Text>Storagatan 123, 123 45 Stad</Text>
+				<Text>Tel: 012-345 6789</Text>
+			</View>
 
       <View style={styles.footer}>
         <Pressable onPress={openMaps}>
