@@ -1,11 +1,6 @@
 import {ImageBackground, StyleSheet, Text, View, Linking} from "react-native";
-import {ImageBackground, StyleSheet, Text, View, Pressable} from "react-native";
-import React from "react";
 import CustomButton from "../components/CustomButton.js";
 import CustomFooterText from "../components/CustomFooterText.js";
-
-import CustomButton from "../components/CustomButton";
-import CustomLinkPressable from "../components/CustomLinkPressable";
 
 import {fontSize, fontWeight} from "../constants/typography";
 import {colors} from "../constants/colors";
@@ -21,10 +16,6 @@ export default function HomeScreen({navigation}) {
 		const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
 		await Linking.openURL(url);
 	}
-	<View style={styles.footer}>
-		<CustomFooterText message="Storagatan 123, 123 45 Stad" />
-		<CustomFooterText message="Tel: 012-345 6789" />
-	</View>;
 
 	// Öppnar telefonappen med restaurangens nummer
 	async function openPhone() {
@@ -42,10 +33,9 @@ export default function HomeScreen({navigation}) {
 						</View>
 					</View>
 				</View>
-
 				<View style={styles.footer}>
-					<CustomLinkPressable title={ADDRESS} icon="location-dot" onPress={openMaps} />
-					<CustomLinkPressable title={PHONE_NUMBER} icon="phone" onPress={openPhone} />
+					<CustomFooterText message="Storagatan 123, 123 45 Stad" onPress={openMaps} />
+					<CustomFooterText message="Tel: 012-345 6789" onPress={openPhone} />
 				</View>
 			</ImageBackground>
 		</View>
