@@ -4,12 +4,13 @@ import {FontAwesomeFreeSolid} from "@react-native-vector-icons/fontawesome-free-
 import BodyText from "./BodyText";
 
 import {spacing} from "../constants/spacing";
+import {colors} from "../constants/colors";
 
 export default function CustomButton({title, icon, onPress}) {
 	return (
 		<Pressable style={({pressed}) => [styles.row, pressed && styles.pressed]} onPress={onPress}>
 			<BodyText title={title} />
-			{icon && <FontAwesomeFreeSolid name={icon} />}
+			{icon && <FontAwesomeFreeSolid name={icon} color={colors.primaryText} />}
 		</Pressable>
 	);
 }
