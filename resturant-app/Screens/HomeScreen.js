@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 		fontSize: fontSize.xLarge,
 		fontWeight: fontWeight.bold,
 		paddingTop: spacing.largest,
-		color: colors.background,
+		color: colors.surface,
 	},
 	footer: {
 		alignItems: "center",
