@@ -2,7 +2,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 import HomeScreen from "./Screens/HomeScreen.js";
-import FoodInfo from "./Screens/FoodInfo.js";
+import FoodInfoScreen from "./Screens/FoodInfoScreen.js";
 import MenuScreen from "./Screens/MenuScreen.js";
 
 const Stack = createNativeStackNavigator();
@@ -21,7 +21,7 @@ export default function App() {
 
 				<Stack.Screen
 					name="FoodInfo"
-					component={FoodInfo}
+					component={FoodInfoScreen}
 					options={({route}) => ({
 						title: route.params.menuItem.title,
 					})}

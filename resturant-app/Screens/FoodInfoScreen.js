@@ -8,7 +8,7 @@ import CustomButton from "../components/CustomButton";
 import WarningText from "../components/WarningText";
 import SmallHeaderText from "../components/SmallHeaderText";
 
-export default function FoodInfo({navigation, route}) {
+export default function FoodInfoScreen({navigation, route}) {
 	const {menuItem} = route.params;
 	return (
 		<View style={styles.outerContainer}>
