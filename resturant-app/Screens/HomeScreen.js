@@ -8,14 +8,17 @@ import {colors} from "../constants/colors";
 import {spacing} from "../constants/spacing";
 
 export default function HomeScreen({navigation}) {
+	// Restaurangens uppgifter som används i kontaktlänkarna längst ner
 	const ADDRESS = "Storagatan 123, 123 45 Stad";
 	const PHONE_NUMBER = "+46012346789";
 
+	// Öppnar adressen i telefonens kartapp
 	async function openMaps() {
 		const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
 		await Linking.openURL(url);
 	}
 
+	// Öppnar telefonappen med restaurangens nummer
 	async function openPhone() {
 		await Linking.openURL(`tel:${PHONE_NUMBER}`);
 	}
@@ -41,6 +44,7 @@ export default function HomeScreen({navigation}) {
 	);
 }
 
+// Stilar för startsidan
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
