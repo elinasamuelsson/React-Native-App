@@ -4,14 +4,17 @@ import {fontSize, fontWeight} from "../constants/typography";
 import {colors} from "../constants/colors";
 
 export default function HomeScreen({navigation}) {
+	// Restaurangens uppgifter som används i kontaktlänkarna längst ner
 	const ADDRESS = "Storagatan 123, 123 45 Stad";
 	const PHONE_NUMBER = "+46012346789";
 
+	// Öppnar adressen i telefonens kartapp
 	async function openMaps() {
 		const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
 		await Linking.openURL(url);
 	}
 
+	// Öppnar telefonappen med restaurangens nummer
 	async function openPhone() {
 		await Linking.openURL(`tel:${PHONE_NUMBER}`);
 	}
@@ -19,9 +22,6 @@ export default function HomeScreen({navigation}) {
 	return (
 		<View style={styles.container}>
 			<ImageBackground source={require("../assets/restaurant.jpg")} style={styles.background} resizeMode="cover">
-				<Pressable onPress={() => navigation.navigate("Foods")}>
-					<Text style={styles.foodText}>Go to foods</Text>
-				</Pressable>
 				<View style={styles.overlay}>
 					<View style={styles.content}>
 						<Text style={styles.title}>UseState() Of Mind</Text>
@@ -44,6 +44,7 @@ export default function HomeScreen({navigation}) {
 	);
 }
 
+// Stilar för startsidan
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -79,12 +80,6 @@ const styles = StyleSheet.create({
 		paddingBottom: 60,
 		paddingTop: 20,
 		backgroundColor: colors.surface,
-	},
-	foodText: {
-		color: colors.background,
-		fontSize: 20,
-		textAlign: "center",
-		paddingTop: 10,
 	},
 	addressText: {
 		color: "rgb(0, 48, 136)",
