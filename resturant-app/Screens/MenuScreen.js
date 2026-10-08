@@ -3,6 +3,13 @@ import {FlatList, StyleSheet, Text, View, Pressable} from "react-native";
 import CustomButton from "../components/CustomButton";
 import menu from "../data/menu";
 
+import {colors} from "../constants/colors";
+import {spacing} from "../constants/spacing";
+import {fontSize, fontWeight} from "../constants/typography";
+import HeaderText from "../components/HeaderText";
+import SmallHeaderText from "../components/SmallHeaderText";
+import BodyText from "../components/BodyText";
+
 const categories = [...new Set(menu.map((item) => item.category))];
 
 // Menysidan
@@ -14,7 +21,9 @@ export default function MenuScreen({navigation}) {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.heading}>Menu</Text>
+			<View style={styles.headerText}>
+				<HeaderText title="Menu" />
+			</View>
 
 			<FlatList
 				data={categories}
@@ -46,10 +55,10 @@ export default function MenuScreen({navigation}) {
 						}}
 					>
 						<View style={styles.row}>
-							<Text style={styles.name}>{item.name}</Text>
+							<SmallHeaderText title={item.name} />
 							<Text style={styles.price}>{item.price} kr</Text>
 						</View>
-						<Text style={styles.description}>{item.description}</Text>
+						<BodyText title={item.description} />
 
 						{item.allergens.length > 0 && (
 							<Text style={styles.allergens}>Allergener: {item.allergens.join(", ")}</Text>
@@ -65,16 +74,13 @@ export default function MenuScreen({navigation}) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
-		paddingTop: 60,
+		backgroundColor: colors.background,
+		paddingTop: spacing.xxxLarge,
 	},
 
 	// Sidrubrik
-	heading: {
-		fontSize: 28,
-		fontWeight: "bold",
-		textAlign: "center",
-		marginBottom: 16,
+	headerText: {
+		margin: spacing.medium,
 	},
 
 	// flexGrow: 0 hindrar kategoriraden från att ta upp halva skärmen
@@ -85,46 +91,39 @@ const styles = StyleSheet.create({
 
 	// Avstånd mellan knapparna och till kanterna
 	categoryContent: {
-		gap: 8,
-		paddingHorizontal: 16,
-		paddingBottom: 16,
+		gap: spacing.small,
+		paddingHorizontal: spacing.medium,
+		paddingBottom: spacing.medium,
 	},
 
 	// Luft runt rätterna
 	menuContent: {
-		paddingHorizontal: 16,
-		paddingBottom: 24,
+		paddingHorizontal: spacing.medium,
+		paddingBottom: spacing.large,
 	},
 
 	// Kort för varje rätt
 	card: {
-		backgroundColor: "#f7f7f7",
-		borderRadius: 10,
-		padding: 14,
-		marginBottom: 10,
+		backgroundColor: colors.surface,
+		borderRadius: spacing.small,
+		padding: spacing.medium,
+		marginBottom: spacing.small,
 	},
 
 	// Lägger namn och pris på samma rad, i var sin kant
 	row: {
 		flexDirection: "row",
 		justifyContent: "space-between",
-		marginBottom: 4,
-	},
-	name: {
-		fontSize: 17,
-		fontWeight: "bold",
+		marginBottom: spacing.xSmall,
 	},
 	price: {
-		fontSize: 17,
-		fontWeight: "600",
-		color: "#c0392b",
-	},
-	description: {
-		color: "#444",
+		fontSize: fontSize.medium,
+		fontWeight: fontWeight.bold,
+		color: colors.secondaryAccent,
 	},
 	allergens: {
-		marginTop: 6,
-		fontSize: 12,
-		color: "#888",
+		marginTop: spacing.small,
+		fontSize: fontSize.xSmall,
+		color: colors.secondaryAccent,
 	},
 });

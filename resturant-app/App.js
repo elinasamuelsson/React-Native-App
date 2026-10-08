@@ -1,11 +1,9 @@
-import {StatusBar} from "expo-status-bar";
-import {StyleSheet, Text, View} from "react-native";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 // Screens som finns i appen
 import HomeScreen from "./Screens/HomeScreen.js";
-import FoodInfo from "./Screens/FoodInfo.js";
+import FoodInfoScreen from "./Screens/FoodInfoScreen.js";
 import MenuScreen from "./Screens/MenuScreen.js";
 
 // Skapar stack-navigatorn som hanterar växlingen mellan screens
@@ -27,7 +25,7 @@ export default function App() {
 
 				<Stack.Screen
 					name="FoodInfo"
-					component={FoodInfo}
+					component={FoodInfoScreen}
 					options={({route}) => ({
 						title: route.params.menuItem.title,
 					})}

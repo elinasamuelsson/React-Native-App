@@ -1,7 +1,11 @@
-import {ImageBackground, StyleSheet, Text, View, Pressable, Linking} from "react-native";
+import {ImageBackground, StyleSheet, Text, View, Linking} from "react-native";
+
 import CustomButton from "../components/CustomButton";
+import CustomLinkPressable from "../components/CustomLinkPressable";
+
 import {fontSize, fontWeight} from "../constants/typography";
 import {colors} from "../constants/colors";
+import {spacing} from "../constants/spacing";
 
 export default function HomeScreen({navigation}) {
 	// Restaurangens uppgifter som används i kontaktlänkarna längst ner
@@ -32,12 +36,8 @@ export default function HomeScreen({navigation}) {
 				</View>
 
 				<View style={styles.footer}>
-					<Pressable onPress={openMaps}>
-						<Text style={styles.addressText}>{ADDRESS}</Text>
-					</Pressable>
-					<Pressable onPress={openPhone}>
-						<Text style={styles.addressText}>Tel: {PHONE_NUMBER}</Text>
-					</Pressable>
+					<CustomLinkPressable title={ADDRESS} icon="location-dot" onPress={openMaps} />
+					<CustomLinkPressable title={PHONE_NUMBER} icon="phone" onPress={openPhone} />
 				</View>
 			</ImageBackground>
 		</View>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.borders + "10",
 		justifyContent: "flex-start",
 		alignItems: "center",
-		paddingTop: 60,
+		paddingTop: spacing.xxxLarge,
 	},
 	content: {
 		flex: 1,
@@ -67,29 +67,18 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	menuButton: {
-		marginTop: 24,
+		marginTop: spacing.large,
 	},
 	title: {
 		fontSize: fontSize.xLarge,
 		fontWeight: fontWeight.bold,
-		paddingTop: 100,
-		color: colors.background,
+		paddingTop: spacing.largest,
+		color: colors.surface,
 	},
 	footer: {
 		alignItems: "center",
-		paddingBottom: 60,
-		paddingTop: 20,
+		paddingBottom: spacing.xxxLarge,
+		paddingTop: spacing.large,
 		backgroundColor: colors.surface,
-	},
-	addressText: {
-		color: "rgb(0, 48, 136)",
-		textDecorationLine: "underline",
-		marginBottom: 4,
-	},
-	testButton: {
-		position: "absolute",
-		bottom: 130,
-		left: 20,
-		right: 20,
 	},
 });

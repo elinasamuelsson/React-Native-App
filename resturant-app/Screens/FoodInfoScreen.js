@@ -1,5 +1,6 @@
 import {View, StyleSheet, FlatList} from "react-native";
 import {spacing} from "../constants/spacing";
+import {colors} from "../constants/colors";
 
 import HeaderText from "../components/HeaderText";
 import BodyText from "../components/BodyText";
@@ -7,11 +8,11 @@ import CustomButton from "../components/CustomButton";
 import WarningText from "../components/WarningText";
 import SmallHeaderText from "../components/SmallHeaderText";
 
-export default function FoodInfo({navigation, route}) {
+export default function FoodInfoScreen({navigation, route}) {
 	const {menuItem} = route.params;
 	return (
 		<View style={styles.outerContainer}>
-			<View>
+			<View style={styles.card}>
 				<HeaderText title={menuItem.name} />
 				<View style={styles.innerContainer}>
 					<SmallHeaderText title="Beskrivning:" />
@@ -26,11 +27,11 @@ export default function FoodInfo({navigation, route}) {
 					<FlatList
 						data={menuItem.allergens}
 						renderItem={({item}) => <WarningText title={item} />}
-						keyExtractor={(item) => item.id}
+						keyExtractor={(item) => item}
 					/>
 				</View>
 			</View>
-			<View>
+			<View style={styles.innerContainer}>
 				<CustomButton title="Back to menu" onPress={() => navigation.navigate("Menu")} variant="secondary" />
 			</View>
 		</View>
@@ -38,6 +39,18 @@ export default function FoodInfo({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-	outerContainer: {flex: 1, justifyContent: "space-between", padding: spacing.small},
-	innerContainer: {paddingBottom: spacing.medium},
+	outerContainer: {
+		flex: 1,
+		justifyContent: "space-between",
+		padding: spacing.medium,
+		backgroundColor: colors.background,
+	},
+	innerContainer: {
+		paddingBottom: spacing.xLarge,
+	},
+	card: {
+		backgroundColor: colors.surface,
+		padding: spacing.medium,
+		borderRadius: spacing.large,
+	},
 });
