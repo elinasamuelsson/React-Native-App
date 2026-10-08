@@ -1,10 +1,7 @@
-import {StatusBar} from "expo-status-bar";
-import {StyleSheet, Text, View} from "react-native";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 import HomeScreen from "./Screens/HomeScreen.js";
-import Foods from "./Screens/Foods.js";
 import FoodInfo from "./Screens/FoodInfo.js";
 import MenuScreen from "./Screens/MenuScreen.js";
 
@@ -19,14 +16,6 @@ export default function App() {
 					component={HomeScreen}
 					options={{
 						title: "Home",
-					}}
-				/>
-
-				<Stack.Screen
-					name="Foods"
-					component={Foods}
-					options={{
-						title: "Foods",
 					}}
 				/>
 
