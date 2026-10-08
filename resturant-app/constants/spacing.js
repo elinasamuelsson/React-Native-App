@@ -6,4 +6,6 @@ export const spacing = {
 	large: 24,
 	xLarge: 32,
 	xxLarge: 48,
+	xxxLarge: 64,
+	largest: 96,
 };
