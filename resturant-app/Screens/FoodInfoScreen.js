@@ -22,14 +22,16 @@ export default function FoodInfoScreen({navigation, route}) {
 					<SmallHeaderText title="Pris:" />
 					<BodyText title={menuItem.price} />
 				</View>
-				<View style={styles.innerContainer}>
-					<SmallHeaderText title="Allergener:" />
-					<FlatList
-						data={menuItem.allergens}
-						renderItem={({item}) => <WarningText title={item} />}
-						keyExtractor={(item) => item}
-					/>
-				</View>
+				{menuItem.allergens.length != 0 ? (
+					<View style={styles.innerContainer}>
+						<SmallHeaderText title="Allergener:" />
+						<FlatList
+							data={menuItem.allergens}
+							renderItem={({item}) => <WarningText title={item} />}
+							keyExtractor={(item) => item}
+						/>
+					</View>
+				) : null}
 			</View>
 			<View style={styles.innerContainer}>
 				<CustomButton title="Back to menu" onPress={() => navigation.navigate("Menu")} variant="secondary" />
