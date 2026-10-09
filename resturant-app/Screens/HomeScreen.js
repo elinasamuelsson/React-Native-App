@@ -1,7 +1,6 @@
 import {ImageBackground, StyleSheet, Text, View, Linking} from "react-native";
-
-import CustomButton from "../components/CustomButton";
-import CustomLinkPressable from "../components/CustomLinkPressable";
+import CustomButton from "../components/CustomButton.js";
+import CustomFooterText from "../components/CustomFooterText.js";
 
 import {fontSize, fontWeight} from "../constants/typography";
 import {colors} from "../constants/colors";
@@ -34,10 +33,9 @@ export default function HomeScreen({navigation}) {
 						</View>
 					</View>
 				</View>
-
 				<View style={styles.footer}>
-					<CustomLinkPressable title={ADDRESS} icon="location-dot" onPress={openMaps} />
-					<CustomLinkPressable title={PHONE_NUMBER} icon="phone" onPress={openPhone} />
+					<CustomFooterText message="Storagatan 123, 123 45 Stad" onPress={openMaps} />
+					<CustomFooterText message="Tel: 012-345 6789" onPress={openPhone} />
 				</View>
 			</ImageBackground>
 		</View>
